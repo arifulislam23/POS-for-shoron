@@ -1,0 +1,82 @@
+﻿@model POS.ViewModels.SellProductViewModel
+
+
+<link href="~/css/autocomplete.css" rel="stylesheet" />
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header text-white" style="background-color: #2A3F54;">
+                    <h2>Sales Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="ProductId">Select Product:</label>
+                        <select id="ProductId" asp-for="ProductId" class="form-control" asp-items="@ViewBag.Products" onchange="getSellingPrice(this.value)"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CustomerName">Customer Name:</label>
+                        <input id="CustomerName" class="form-control" autocomplete="off">
+                        <div id="suggestionsContainer"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CustomerPhoneNumber">Customer Phone:</label>
+                        <input id="CustomerPhoneNumber" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CustomerEmail">Customer Email:</label>
+                        <input id="CustomerEmail" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Address">Address:</label>
+                        <input id="Address" class="form-control">
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header text-white" style="background-color: #2A3F54;">
+                    <h2>Price Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="QuantityToSell">Quantity:</label>
+                        <input id="QuantityToSell" class="form-control" type="number" min="1" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="UnitPrice">Unit Price:</label>
+                        <input class="form-control" id="UnitPrice" readonly />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Discount">Discount Amount:</label>
+                        <input class="form-control" id="Discount" value="0" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SellingPrice">Total Price:</label>
+                        <input id="SellingPrice" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button type="submit" class="btn btn-danger" id="sellItemBtn">Sell Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/js/selles.js"></script>

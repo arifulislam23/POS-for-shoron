@@ -1,0 +1,44 @@
+﻿@model POS.DataModels.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-header text-white" style="background-color:#2A3F54">
+                    <h2 class="mb-0">Product Details</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                       
+                        <div class="col-md-8">
+                            <dl class="row">
+                                <dt class="col-sm-4">Name:</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                                <dt class="col-sm-4">Details:</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Details)</dd>
+
+                                <dt class="col-sm-4">Buy Price:</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.BuyPrice)</dd>
+
+                                <dt class="col-sm-4">Expected Sell Price:</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.ExpectedSellPrice)</dd>
+
+                                <dt class="col-sm-4">Stock Quantity:</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Stock.Quantity)</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right">
+                    <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-dark" style="background-color:#2A3F54">Edit</a>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

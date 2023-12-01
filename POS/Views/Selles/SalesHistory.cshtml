@@ -1,0 +1,33 @@
+﻿@model List<POS.DataModels.SellHistory>
+
+<h2>Sales History</h2>
+
+<div class="x_panel">
+    <table class="table table-bordered table-hover table-striped">
+        <thead style="background: #2A3F54; color:white">
+            <tr>
+                <th>Product</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Quantity</th>
+                <th>Sell Price</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sale in Model)
+            {
+                <tr>
+                    <td>@sale.Product.Name</td>
+                    <td>@sale.Customer.CustomerName</td>
+                    <td>@sale.Customer.PhoneNumber</td>
+                    <td>@sale.Quantity</td>
+                    <td>@sale.SellPrice</td>
+                    <td>@sale.CreateAt.ToShortDateString()</td>
+                    <td>@sale.CreateAt.ToShortTimeString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
